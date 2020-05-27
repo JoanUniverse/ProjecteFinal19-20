@@ -7,6 +7,7 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -17,6 +18,9 @@ public class MainActivity extends AppCompatActivity implements LlistaForo.ForoLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Intent intent = getIntent();
+        String nomUsuari = intent.getStringExtra("CodiUsuari");
+        Toast.makeText(this, "Benvolgut " + nomUsuari, Toast.LENGTH_LONG).show();
         LlistaForo llistaForo = (LlistaForo)
                 getSupportFragmentManager().findFragmentById(R.id.FrgLlista);
         llistaForo.setForoListener(this);
