@@ -49,6 +49,14 @@
         android:layout_height="wrap_content"
         android:id="@+id/confirmarContrasenyaRegisterEditText"
         app:layout_constraintTop_toBottomOf="@id/confirmarContrasenyaRegisterTextView"
+        app:layout_constraintBottom_toTopOf="@id/registrarseRegisterButton"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Registrar-se"
+        android:id="@+id/registrarseRegisterButton"
+        app:layout_constraintTop_toBottomOf="@id/confirmarContrasenyaRegisterEditText"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -44,5 +44,15 @@
         android:id="@+id/entrarLoginButton"
         android:onClick="onEnviarButtonClick"
         app:layout_constraintTop_toBottomOf="@id/contrasenyaEditText"
+        app:layout_constraintBottom_toBottomOf="@id/registrarseLoginButton"/>
+
+    <Button
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Registrar-se"
+        android:id="@+id/registrarseLoginButton"
+        android:onClick="onRegistrarseButtonClick"
+        app:layout_constraintTop_toBottomOf="@id/entrarLoginButton"
         app:layout_constraintBottom_toBottomOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -29,4 +29,9 @@ public class LoginActivity extends AppCompatActivity {
         intent.putExtra("CodiUsuari", nomUsuari);
         startActivity(intent);
     }
+
+    public void onRegistrarseButtonClick(View v) {
+        Intent intent = new Intent(this, RegisterActivity.class);
+        startActivity(intent);
+    }
 }
