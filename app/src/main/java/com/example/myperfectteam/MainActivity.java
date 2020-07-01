@@ -1,15 +1,12 @@
-package com.example.projectefinal19_20;
+package com.example.myperfectteam;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
-
-import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements LlistaForo.ForoListener{
 
@@ -19,8 +16,8 @@ public class MainActivity extends AppCompatActivity implements LlistaForo.ForoLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Intent intent = getIntent();
-        String nomUsuari = intent.getStringExtra("CodiUsuari");
-        Toast.makeText(this, "Benvolgut " + nomUsuari, Toast.LENGTH_LONG).show();
+        String platformID = intent.getStringExtra("platformID");
+        Toast.makeText(this, "ID: " + platformID, Toast.LENGTH_LONG).show();
         LlistaForo llistaForo = (LlistaForo)
                 getSupportFragmentManager().findFragmentById(R.id.FrgLlista);
         llistaForo.setForoListener(this);

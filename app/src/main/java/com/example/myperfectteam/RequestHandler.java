@@ -1,6 +1,4 @@
-package com.example.projectefinal19_20;
-
-import org.json.JSONObject;
+package com.example.myperfectteam;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -11,12 +9,13 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
-import java.util.Iterator;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.net.ssl.HttpsURLConnection;
 
 public class RequestHandler {
-    public static String sendPost(String r_url, JSONObject postDataParams) throws Exception {
+    public static String sendPost(String r_url, HashMap<String, String> postDataParams) throws Exception {
         URL url = new URL(r_url);
 
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -72,21 +71,18 @@ public class RequestHandler {
         }
     }
 
-    private static String encodeParams(JSONObject params) throws Exception {
+    private static String encodeParams(HashMap<String, String> params) throws Exception {
         StringBuilder result = new StringBuilder();
         boolean first = true;
-        Iterator<String> itr = params.keys();
-        while (itr.hasNext()) {
-            String key = itr.next();
-            Object value = params.get(key);
+        for (Map.Entry<String, String> entry : params.entrySet()) {
             if (first)
                 first = false;
             else
                 result.append("&");
 
-            result.append(URLEncoder.encode(key, "UTF-8"));
+            result.append(URLEncoder.encode(entry.getKey(), "UTF-8"));
             result.append("=");
-            result.append(URLEncoder.encode(value.toString(), "UTF-8"));
+            result.append(URLEncoder.encode(entry.getValue(), "UTF-8"));
         }
         return result.toString();
     }

@@ -1,4 +1,4 @@
-package com.example.projectefinal19_20;
+package com.example.myperfectteam;
 
 import android.content.Context;
 import androidx.test.platform.app.InstrumentationRegistry;

@@ -9,50 +9,50 @@
     <androidx.appcompat.widget.AppCompatTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Nom d'usuari"
-        android:id="@+id/nomUsuariTextView"
+        android:text="Username"
+        android:id="@+id/userNameTextView"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/nomUsuariEditText"/>
+        app:layout_constraintBottom_toTopOf="@id/userNameEditText"/>
 
     <androidx.appcompat.widget.AppCompatEditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/nomUsuariEditText"
-        app:layout_constraintTop_toBottomOf="@id/nomUsuariTextView"
-        app:layout_constraintBottom_toTopOf="@id/contrasenyaTextView"/>
+        android:id="@+id/userNameEditText"
+        app:layout_constraintTop_toBottomOf="@id/userNameTextView"
+        app:layout_constraintBottom_toTopOf="@id/passwordTextView"/>
 
     <androidx.appcompat.widget.AppCompatTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Contrasenya"
-        android:id="@+id/contrasenyaTextView"
-        app:layout_constraintTop_toBottomOf="@id/nomUsuariEditText"
-        app:layout_constraintBottom_toTopOf="@id/contrasenyaEditText"/>
+        android:text="Password"
+        android:id="@+id/passwordTextView"
+        app:layout_constraintTop_toBottomOf="@id/userNameEditText"
+        app:layout_constraintBottom_toTopOf="@id/passwordEditText"/>
 
     <androidx.appcompat.widget.AppCompatEditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/contrasenyaEditText"
-        app:layout_constraintTop_toBottomOf="@id/contrasenyaTextView"
-        app:layout_constraintBottom_toTopOf="@id/entrarLoginButton"/>
+        android:id="@+id/passwordEditText"
+        app:layout_constraintTop_toBottomOf="@id/passwordTextView"
+        app:layout_constraintBottom_toTopOf="@id/loginLoginButton"/>
 
     <Button
         app:layout_constraintStart_toStartOf="parent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Entrar"
-        android:id="@+id/entrarLoginButton"
-        android:onClick="onEnviarButtonClick"
-        app:layout_constraintTop_toBottomOf="@id/contrasenyaEditText"
-        app:layout_constraintBottom_toBottomOf="@id/registrarseLoginButton"/>
+        android:text="Login"
+        android:id="@+id/loginLoginButton"
+        android:onClick="onLoginButtonClick"
+        app:layout_constraintTop_toBottomOf="@id/passwordEditText"
+        app:layout_constraintBottom_toBottomOf="@id/registerLoginButton"/>
 
     <Button
         app:layout_constraintStart_toStartOf="parent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Registrar-se"
-        android:id="@+id/registrarseLoginButton"
-        android:onClick="onRegistrarseButtonClick"
-        app:layout_constraintTop_toBottomOf="@id/entrarLoginButton"
+        android:text="Register"
+        android:id="@+id/registerLoginButton"
+        android:onClick="onRegisterButtonClick"
+        app:layout_constraintTop_toBottomOf="@id/loginLoginButton"
         app:layout_constraintBottom_toBottomOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

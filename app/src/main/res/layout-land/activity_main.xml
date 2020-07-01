@@ -6,14 +6,14 @@
     android:layout_height="match_parent"
     android:baselineAligned="false">
 
-    <fragment class="com.example.projectefinal19_20.LlistaForo"
+    <fragment class="com.example.myperfectteam.LlistaForo"
         android:id="@+id/FrgLlista"
         android:layout_weight="30"
         android:layout_width="0px"
         android:layout_height="match_parent"
         tools:layout="@layout/foro_llista" />
 
-    <fragment class="com.example.projectefinal19_20.FilForo"
+    <fragment class="com.example.myperfectteam.FilForo"
         android:id="@+id/FrgFil"
         android:layout_weight="70"
         android:layout_width="0px"

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <fragment
-        class="com.example.projectefinal19_20.LlistaForo"
+        class="com.example.myperfectteam.LlistaForo"
         android:id="@+id/FrgLlista"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>

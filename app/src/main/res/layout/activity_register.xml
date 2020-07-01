@@ -9,54 +9,70 @@
     <androidx.appcompat.widget.AppCompatTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Correu electronic"
-        android:id="@+id/emailRegisterTextView"
+        android:text="Username"
+        android:id="@+id/userNameRegisterTextView"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/emailRegisterEditText"/>
+        app:layout_constraintBottom_toTopOf="@id/userNameRegisterEditText"/>
 
     <androidx.appcompat.widget.AppCompatEditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/emailRegisterEditText"
-        app:layout_constraintTop_toBottomOf="@id/emailRegisterTextView"
-        app:layout_constraintBottom_toTopOf="@id/contrasenyaRegisterTextView"/>
+        android:id="@+id/userNameRegisterEditText"
+        app:layout_constraintTop_toBottomOf="@id/userNameRegisterTextView"
+        app:layout_constraintBottom_toTopOf="@id/userEmailRegisterTextView"/>
 
     <androidx.appcompat.widget.AppCompatTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Contrasenya"
-        android:id="@+id/contrasenyaRegisterTextView"
-        app:layout_constraintTop_toBottomOf="@id/emailRegisterEditText"
-        app:layout_constraintBottom_toTopOf="@id/contrasenyaRegisterEditText"/>
+        android:text="Email"
+        android:id="@+id/userEmailRegisterTextView"
+        app:layout_constraintTop_toBottomOf="@+id/userNameRegisterEditText"
+        app:layout_constraintBottom_toTopOf="@id/userEmailRegisterEditText"/>
 
     <androidx.appcompat.widget.AppCompatEditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/contrasenyaRegisterEditText"
-        app:layout_constraintTop_toBottomOf="@id/contrasenyaRegisterTextView"
-        app:layout_constraintBottom_toTopOf="@id/confirmarContrasenyaRegisterTextView"/>
+        android:id="@+id/userEmailRegisterEditText"
+        app:layout_constraintTop_toBottomOf="@id/userEmailRegisterTextView"
+        app:layout_constraintBottom_toTopOf="@id/passwordRegisterTextView"/>
 
     <androidx.appcompat.widget.AppCompatTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Confirmar contrasenya"
-        android:id="@+id/confirmarContrasenyaRegisterTextView"
-        app:layout_constraintTop_toBottomOf="@id/contrasenyaRegisterEditText"
-        app:layout_constraintBottom_toTopOf="@id/confirmarContrasenyaRegisterEditText"/>
+        android:text="Password"
+        android:id="@+id/passwordRegisterTextView"
+        app:layout_constraintTop_toBottomOf="@id/userEmailRegisterEditText"
+        app:layout_constraintBottom_toTopOf="@id/passwordRegisterEditText"/>
 
     <androidx.appcompat.widget.AppCompatEditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/confirmarContrasenyaRegisterEditText"
-        app:layout_constraintTop_toBottomOf="@id/confirmarContrasenyaRegisterTextView"
-        app:layout_constraintBottom_toTopOf="@id/registrarseRegisterButton"/>
+        android:id="@+id/passwordRegisterEditText"
+        app:layout_constraintTop_toBottomOf="@id/passwordRegisterTextView"
+        app:layout_constraintBottom_toTopOf="@id/confirmPasswordRegisterTextView"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Confirm password"
+        android:id="@+id/confirmPasswordRegisterTextView"
+        app:layout_constraintTop_toBottomOf="@id/passwordRegisterEditText"
+        app:layout_constraintBottom_toTopOf="@id/confirmPasswordRegisterEditText"/>
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/confirmPasswordRegisterEditText"
+        app:layout_constraintTop_toBottomOf="@id/confirmPasswordRegisterTextView"
+        app:layout_constraintBottom_toTopOf="@id/registerRegisterButton"/>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Registrar-se"
-        android:id="@+id/registrarseRegisterButton"
-        app:layout_constraintTop_toBottomOf="@id/confirmarContrasenyaRegisterEditText"
+        android:text="Register"
+        android:id="@+id/registerRegisterButton"
+        android:onClick="onRegistrarseRegisterButtonClick"
+        app:layout_constraintTop_toBottomOf="@id/confirmPasswordRegisterEditText"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
