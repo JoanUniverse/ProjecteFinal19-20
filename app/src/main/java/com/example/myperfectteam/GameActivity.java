@@ -22,7 +22,7 @@ public class GameActivity extends AppCompatActivity {
     }
 
     public void onCSGOGameButtonClick(View v) {
-        Intent intent = new Intent(this, SteamOpenIDSignInActivity.class);
+        Intent intent = new Intent(this, PlayerNameActivity.class);
         intent.putExtra("gameID", 1);
         startActivity(intent);
     }

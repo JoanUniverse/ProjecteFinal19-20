@@ -10,21 +10,37 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+
 public class SteamOpenIDSignInActivity extends AppCompatActivity {
 
     // The string will appear to the user in the login screen
     // you can put your app's name
     final String REALM_PARAM = "MyPerfectTeam";
+    int gameID;
+    int userID;
+    String playerName;
+    String platformID;
+    Preferences preferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Intent intent = getIntent();
+        gameID = intent.getIntExtra("gameID", 0);
+        playerName = intent.getStringExtra("playerName");
+        preferences = new Preferences(this);
+        userID = preferences.getUserID();
         setContentView(R.layout.activity_steam_open_idsign_in);
 
 
@@ -61,14 +77,47 @@ public class SteamOpenIDSignInActivity extends AppCompatActivity {
 
                     // Extracts user id.
                     Uri userAccountUrl = Uri.parse(Url.getQueryParameter("openid.identity"));
-                    String platformID = userAccountUrl.getLastPathSegment();
+                    platformID = userAccountUrl.getLastPathSegment();
+                    preferences.setSteamPlatformID(platformID);
+                    new RequestAsync().execute();
 
-                    Toast.makeText(getApplicationContext(), platformID, Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                    intent.putExtra("platformID", platformID);
-                    startActivity(intent);
                 }
             }
         });
+    }
+
+    public class RequestAsync extends AsyncTask<String,String,String> {
+        @Override
+        protected String doInBackground(String... strings) {
+            try {
+                // POST Request
+                HashMap<String, String> postDataParams = new HashMap<>();
+                postDataParams.put("playerNameA", playerName);
+                postDataParams.put("gameIDA", String.valueOf(gameID));
+                postDataParams.put("userIDA", String.valueOf(userID));
+                postDataParams.put("playerPlatformIDA", platformID);
+
+                return RequestHandler.sendPost("http://192.168.18.3/MyPerfectTeamServer/public/player/insert/",postDataParams);
+            }
+            catch(Exception e){
+                return new String("Exception: " + e.getMessage());
+            }
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            Boolean response;
+            try {
+                JSONObject convertedObject = new JSONObject(s);
+                response = convertedObject.getBoolean("correcta");
+                if(response){
+                    Toast.makeText(getApplicationContext(), s, Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(intent);
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

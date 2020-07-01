@@ -16,18 +16,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.example.myperfectteam.SteamOpenIDSignInActivity"></activity>
-        <activity android:name="com.example.myperfectteam.GameActivity" />
-        <activity android:name="com.example.myperfectteam.RegisterActivity" />
-        <activity android:name="com.example.myperfectteam.LoginActivity">
+        <activity android:name=".PlayerNameActivity"></activity>
+        <activity android:name=".SteamOpenIDSignInActivity" />
+        <activity android:name=".GameActivity" />
+        <activity android:name=".RegisterActivity" />
+        <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.myperfectteam.FilActivity" />
-        <activity android:name="com.example.myperfectteam.MainActivity" />
+        <activity android:name=".FilActivity" />
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>
