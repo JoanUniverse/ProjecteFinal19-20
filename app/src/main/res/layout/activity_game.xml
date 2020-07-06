@@ -1,39 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GameActivity">
+    android:background="@android:color/white"
+    android:padding="25dp"
+    android:orientation="vertical">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="30dp"
+        android:textColor="#266597"
         android:gravity="center"
         android:id="@+id/titleGameTextView"
-        android:text="Choose your GAME!"
-        app:layout_constraintTop_toTopOf="parent"/>
+        android:text="Choose your GAME!"/>
 
     <Button
         android:layout_width="match_parent"
+        android:background="@drawable/csgo"
         android:layout_height="300dp"
         android:id="@+id/csgoGameButton"
         android:text="CSGO"
+        android:textColor="@android:color/white"
         android:onClick="onCSGOGameButtonClick"
-        android:textSize="50dp"
-        app:layout_constraintTop_toBottomOf="@id/titleGameTextView"
-        app:layout_constraintBottom_toTopOf="@id/owGameButton"/>
+        android:textSize="50dp"/>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="300dp"
+        android:background="@drawable/overwatch"
         android:id="@+id/owGameButton"
+        android:textColor="@android:color/white"
         android:text="OVERWATCH"
-        android:textSize="50dp"
-        app:layout_constraintTop_toBottomOf="@id/csgoGameButton"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        android:textSize="50dp"/>
 
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

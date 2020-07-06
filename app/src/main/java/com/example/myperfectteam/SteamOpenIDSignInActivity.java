@@ -112,8 +112,9 @@ public class SteamOpenIDSignInActivity extends AppCompatActivity {
                 response = convertedObject.getBoolean("correcta");
                 if(response){
                     Toast.makeText(getApplicationContext(), s, Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), ForumListActivity.class);
                     startActivity(intent);
+                    finish();
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
