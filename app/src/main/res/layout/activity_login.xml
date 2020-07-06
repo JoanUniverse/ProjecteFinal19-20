@@ -1,58 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity">
+    android:background="@android:color/white"
+    android:padding="25dp"
+    android:orientation="vertical">
 
-    <androidx.appcompat.widget.AppCompatTextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Username"
-        android:id="@+id/userNameTextView"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/userNameEditText"/>
+        android:layout_weight="5"
+        android:orientation="vertical">
 
-    <androidx.appcompat.widget.AppCompatEditText
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_weight="1"
+            android:background="@drawable/main_logo"></ImageView>
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#266597"
+            android:textColorHint="#266597"
+            android:backgroundTint="#266597"
+            android:textCursorDrawable="@drawable/cursor_colour"
+            android:layout_weight="1"
+            android:hint="Username"
+            android:id="@+id/userNameEditText"/>
+
+        <androidx.appcompat.widget.AppCompatEditText
+
+            android:textColor="#266597"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textCursorDrawable="@drawable/cursor_colour"
+            android:layout_weight="1"
+            android:backgroundTint="#266597"
+            android:textColorHint="#266597"
+            android:hint="Password"
+            android:id="@+id/passwordEditText"
+            android:inputType="textPassword"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#266597"
+            android:textColor="@android:color/white"
+            android:text="Login"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center"
+            android:id="@+id/loginLoginButton"
+            android:onClick="onLoginButtonClick"/>
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/userNameEditText"
-        app:layout_constraintTop_toBottomOf="@id/userNameTextView"
-        app:layout_constraintBottom_toTopOf="@id/passwordTextView"/>
+        android:orientation="vertical"
+        android:layout_weight="1">
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Password"
-        android:id="@+id/passwordTextView"
-        app:layout_constraintTop_toBottomOf="@id/userNameEditText"
-        app:layout_constraintBottom_toTopOf="@id/passwordEditText"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Don't have an account yet?"
+            android:layout_weight="1"
+            android:textColor="#266597"
+            android:layout_gravity="center"
+            android:gravity="bottom"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#266597"
+            android:layout_marginTop="10dp"
+            android:textColor="@android:color/white"
+            android:text="Register"
+            android:id="@+id/registerLoginButton"
+            android:layout_gravity="center"
+            android:onClick="onRegisterButtonClick"/>
 
-    <androidx.appcompat.widget.AppCompatEditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/passwordEditText"
-        app:layout_constraintTop_toBottomOf="@id/passwordTextView"
-        app:layout_constraintBottom_toTopOf="@id/loginLoginButton"/>
-
-    <Button
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Login"
-        android:id="@+id/loginLoginButton"
-        android:onClick="onLoginButtonClick"
-        app:layout_constraintTop_toBottomOf="@id/passwordEditText"
-        app:layout_constraintBottom_toBottomOf="@id/registerLoginButton"/>
-
-    <Button
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Register"
-        android:id="@+id/registerLoginButton"
-        android:onClick="onRegisterButtonClick"
-        app:layout_constraintTop_toBottomOf="@id/loginLoginButton"
-        app:layout_constraintBottom_toBottomOf="parent"/>
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+</LinearLayout>

@@ -40,7 +40,7 @@ public class LoginActivity extends AppCompatActivity {
                 postDataParams.put("userNameA", userName);
                 postDataParams.put("userPasswordA", password);
 
-                return RequestHandler.sendPost("http://192.168.18.3/MyPerfectTeamServer/public/appuser/login/",postDataParams);
+                return RequestHandler.sendPost("http://192.168.18.74/MyPerfectTeamServer/public/appuser/login/",postDataParams);
             }
             catch(Exception e){
                 return new String("Exception: " + e.getMessage());
