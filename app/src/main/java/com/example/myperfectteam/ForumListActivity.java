@@ -3,6 +3,8 @@ package com.example.myperfectteam;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,23 +13,34 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.google.gson.Gson;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class ForumListActivity extends AppCompatActivity {
+    Preferences preferences;
     private ArrayList<Forum> forums = new ArrayList<>();
     private ListView listView;
-    private ForumListActivity.ForumListener listener;
     private ArrayAdapter<Forum> adapter;
     private Context context;
+    int forumID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forum_list);
+        preferences = new Preferences(this);
+        new RequestAsync().execute();
+        showForums();
+    }
 
+    private void showForums() {
         listView = findViewById(R.id.forumListView);
-        forums.add(new Forum(0,"NEW PLAYERS", "This is a forum created for new players to learn faster about the game."));
-        forums.add(new Forum(1,"LOOKING FOR TEAM", "Let's create a team together! Create your perfect team to achieve your goals"));
 
         adapter = new ArrayForum(getApplicationContext(), R.layout.forum_list_item, forums);
         listView.setAdapter(adapter);
@@ -35,15 +48,50 @@ public class ForumListActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> list, View view, int pos, long id) {
                 Forum forum = adapter.getItem(pos);
-                String forumName = forum.getForumName();
-                listener.onForumSelected(forumName);
+                forumID = forum.getForumID();
+                preferences.setLastForumID(forumID);
+                goToMainActivity();
             }
         });
     }
-    public interface ForumListener {
-        void onForumSelected(String forum);
+
+    private void goToMainActivity() {
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra("forumID", forumID);
+        startActivity(intent);
     }
-    public void setForumListener(ForumListActivity.ForumListener listener) {
-        this.listener= listener;
+
+    public class RequestAsync extends AsyncTask<String,Void,String> {
+        @Override
+        protected String doInBackground(String... params) {
+            try {
+                //GET Request
+                HashMap<String, String> p = new HashMap<String, String>();
+                return RequestHandler.sendGet(RequestHandler.GET_ALL_FORUMS);
+            }
+            catch(Exception e){
+                return new String("Exception: " + e.getMessage());
+            }
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            Boolean response;
+            try {
+                JSONObject convertedObject = new JSONObject(s);
+                response = convertedObject.getBoolean("correcta");
+                if(response){
+                    JSONArray jsonArray = convertedObject.getJSONArray("dades");
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject explrObject = jsonArray.getJSONObject(i);
+                        Forum forum = new Gson().fromJson(explrObject.toString(), Forum.class);
+                        forums.add(forum);
+                    }
+                    showForums();
+                }
+            } catch (JSONException e) {
+                    e.printStackTrace();
+            }
+        }
     }
 }

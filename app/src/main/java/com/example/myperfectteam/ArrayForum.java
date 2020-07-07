@@ -27,8 +27,8 @@ public class ArrayForum extends ArrayAdapter<Forum> {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(R.layout.forum_list_item, null);
 
-        TextView forumNameTV = view.findViewById(R.id.usuariFil);
-        TextView forumDescriptionTV = view.findViewById(R.id.missatgeFil);
+        TextView forumNameTV = view.findViewById(R.id.forumNameTV);
+        TextView forumDescriptionTV = view.findViewById(R.id.forumDescriptionTV);
         String forumName = forum.getForumName();
         String forumDescription = forum.getForumDescription();
 

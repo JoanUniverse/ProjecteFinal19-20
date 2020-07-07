@@ -15,6 +15,15 @@ import java.util.Map;
 import javax.net.ssl.HttpsURLConnection;
 
 public class RequestHandler {
+    private static String ip = "192.168.18.74";
+    public static final String USER_LOGIN =  "http://" + ip + "/MyPerfectTeamServer/public/appuser/login/";
+    public static final String USER_REGISTER =  "http://" + ip + "/MyPerfectTeamServer/public/appuser/userregister/";
+    public static final String INSERT_PLAYER = "http://" + ip + "/MyPerfectTeamServer/public/player/insert/";
+    public static final String INSERT_THREAD = "http://" + ip + "/MyPerfectTeamServer/public/thread/insert/";
+    public static final String GET_ALL_THREADS = "http://" + ip + "/MyPerfectTeamServer/public/thread/";
+    public static final String GET_ALL_FORUMS = "http://" + ip + "/MyPerfectTeamServer/public/forum/";
+    public static final String CHECK_PLAYER = "http://" + ip + "/MyPerfectTeamServer/public/player/check/";
+
     public static String sendPost(String r_url, HashMap<String, String> postDataParams) throws Exception {
         URL url = new URL(r_url);
 

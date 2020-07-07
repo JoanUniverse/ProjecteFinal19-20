@@ -18,7 +18,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ForumListActivity"></activity>
+        <activity android:name=".AddThreadActivity"></activity>
+        <activity android:name=".ForumListActivity">
+        </activity>
         <activity android:name=".PlayerNameActivity" />
         <activity android:name=".SteamOpenIDSignInActivity" />
         <activity android:name=".GameActivity" />

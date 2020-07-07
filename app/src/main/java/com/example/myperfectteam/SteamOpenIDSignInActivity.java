@@ -21,7 +21,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
-
+//Joan Quetglas Alomar
 public class SteamOpenIDSignInActivity extends AppCompatActivity {
 
     // The string will appear to the user in the login screen
@@ -78,7 +78,7 @@ public class SteamOpenIDSignInActivity extends AppCompatActivity {
                     // Extracts user id.
                     Uri userAccountUrl = Uri.parse(Url.getQueryParameter("openid.identity"));
                     platformID = userAccountUrl.getLastPathSegment();
-                    preferences.setSteamPlatformID(platformID);
+                    preferences.setLastPlatfornID(platformID);
                     new RequestAsync().execute();
 
                 }
@@ -97,7 +97,7 @@ public class SteamOpenIDSignInActivity extends AppCompatActivity {
                 postDataParams.put("userIDA", String.valueOf(userID));
                 postDataParams.put("playerPlatformIDA", platformID);
 
-                return RequestHandler.sendPost("http://192.168.18.3/MyPerfectTeamServer/public/player/insert/",postDataParams);
+                return RequestHandler.sendPost(RequestHandler.INSERT_PLAYER,postDataParams);
             }
             catch(Exception e){
                 return new String("Exception: " + e.getMessage());

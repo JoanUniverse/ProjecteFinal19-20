@@ -37,7 +37,7 @@ public class RegisterActivity extends AppCompatActivity {
                 postDataParams.put("userPasswordA", password);
                 postDataParams.put("userNameA", userName);
 
-                return RequestHandler.sendPost("http://192.168.18.3/MyPerfectTeamServer/public/appuser/userregister/",postDataParams);
+                return RequestHandler.sendPost(RequestHandler.USER_REGISTER,postDataParams);
             }
             catch(Exception e){
                 return new String("Exception: " + e.getMessage());

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:padding="25dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="bottom"
+        android:textSize="30dp"
+        android:text="NEW THREAD"
+        android:textColor="#266597"
+        android:layout_weight="2"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textColorHint="#266597"
+        android:backgroundTint="#266597"
+        android:textCursorDrawable="@drawable/cursor_colour"
+        android:hint="Name"
+        android:id="@+id/addThreadNameET"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textColorHint="#266597"
+        android:backgroundTint="#266597"
+        android:textCursorDrawable="@drawable/cursor_colour"
+        android:hint="Description"
+        android:id="@+id/addThreadDescriptionET"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="100dp"
+        android:text="ADD"
+        android:onClick="onAddThreadClicked"
+        android:background="#266597"
+        android:textColor="@android:color/white"/>
+
+</LinearLayout>
