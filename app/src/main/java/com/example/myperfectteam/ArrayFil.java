@@ -36,7 +36,7 @@ public class ArrayFil extends ArrayAdapter<ThreadObject> {
         TextView threadDescriptionTV = view.findViewById(R.id.threadDescription);
         TextView threadDateTV = view.findViewById(R.id.threadDate);
 
-        playerTV.setText(threadObject.getPlayerID());
+        playerTV.setText(threadObject.getPlayerName());
         threadTitleTV.setText(threadObject.getThreadTitle());
         threadDescriptionTV.setText(threadObject.getThreadDescription());
         threadDateTV.setText(threadObject.getThreadDate());

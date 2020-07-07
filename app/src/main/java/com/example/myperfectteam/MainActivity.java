@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements LlistaForo.ForoListener, LlistaForo.FabListener{
 
+    public static ThreadObject threadObjectSelected;
     ListView listView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,19 +27,18 @@ public class MainActivity extends AppCompatActivity implements LlistaForo.ForoLi
     }
 
     @Override
-    public void onFilSeleccionat(String fil) {
+    public void onFilSeleccionat(ThreadObject threadObject) {
         // Mirar l'orientació
+        threadObjectSelected = threadObject;
         int orientation = this.getResources().getConfiguration().orientation;
         if (orientation == Configuration.ORIENTATION_PORTRAIT) {
             // estam en vertical
             Intent i = new Intent(this, FilActivity.class);
-            i.putExtra("nomFil", fil);
             startActivity(i);
-            finish();
         } else {
             // estam en horitzontal
             ((FilForo) getSupportFragmentManager()
-                    .findFragmentById(R.id.FrgFil)).mostraFil(fil);
+                    .findFragmentById(R.id.FrgFil)).mostraFil(threadObject);
         }
     }
 

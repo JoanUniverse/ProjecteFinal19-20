@@ -20,8 +20,8 @@ public class FilForo extends Fragment {
         return inflater.inflate(R.layout.foro_fil, container, false);
     }
 
-    public void mostraFil(String fil) {
+    public void mostraFil(ThreadObject threadObject) {
         TextView tv = getView().findViewById(R.id.NomFil);
-        tv.setText((fil));
+        tv.setText((threadObject.toString()));
     }
 }

@@ -3,6 +3,9 @@ package com.example.myperfectteam;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonParser;
+
 public class Preferences {
     private static final String PREFERENCES_NAME = "MyPerfectTeamPreferences";
     private static final String APPUSERID = "userID";
@@ -13,6 +16,7 @@ public class Preferences {
     private static final String LASTFORUMID = "lastForumID";
     private static final String LASTTHREADID = "lastThreadID";
     private static final String PLAYERNAME = "playerName";
+    private static final String THREADOBJECT = "threadObject";
 
     private static final String LASTPLAYERID = "lastPlayerID";
     private static final String CSGOPLAYERID = "csgoPlayerID";
@@ -24,6 +28,7 @@ public class Preferences {
     private String userToken;
     private String lastPlatfornID;
     private String playerName;
+    private String threadObject;
 
     private int lastPlayerID;
     private int csgoPlayerID;
@@ -45,6 +50,7 @@ public class Preferences {
         this.lastThreadID = this.pref.getInt(LASTTHREADID, -1);
         this.lastPlayerID = this.pref.getInt(LASTPLAYERID, -1);
         this.playerName = this.pref.getString(PLAYERNAME, "");
+        this.threadObject = this.pref.getString(THREADOBJECT, "");
     }
 
     public int getUserID() {
@@ -165,6 +171,17 @@ public class Preferences {
         this.lastPlatfornID = lastPlatfornID;
         SharedPreferences.Editor editor = this.pref.edit();
         editor.putString(LASTPLATFORMID, lastPlatfornID);
+        editor.commit();
+    }
+
+    public String getThreadObject() {
+        return threadObject;
+    }
+
+    public void setThreadObject(String threadObject) {
+        this.threadObject = threadObject;
+        SharedPreferences.Editor editor = this.pref.edit();
+        editor.putString(THREADOBJECT, threadObject);
         editor.commit();
     }
 }

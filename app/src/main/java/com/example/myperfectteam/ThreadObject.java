@@ -9,14 +9,16 @@ public class ThreadObject {
     private String threadDate;
     private int forumID;
     private int playerID;
+    private String playerName;
 
-    public ThreadObject(int threadID, String threadDescription, String threadTitle, String threadDate, int forumID, int playerID) {
+    public ThreadObject(int threadID, String threadDescription, String threadTitle, String threadDate, int forumID, int playerID, String playerName) {
         this.threadID = threadID;
         this.threadDescription = threadDescription;
         this.threadTitle = threadTitle;
         this.threadDate = threadDate;
         this.forumID = forumID;
         this.playerID = playerID;
+        this.playerName = playerName;
     }
 
     public int getThreadID() {
@@ -65,5 +67,26 @@ public class ThreadObject {
 
     public void setPlayerID(int playerID) {
         this.playerID = playerID;
+    }
+
+    public String getPlayerName() {
+        return playerName;
+    }
+
+    public void setPlayerName(String playerName) {
+        this.playerName = playerName;
+    }
+
+    @Override
+    public String toString() {
+        return "ThreadObject{" +
+                "threadID=" + threadID +
+                ", threadDescription='" + threadDescription + '\'' +
+                ", threadTitle='" + threadTitle + '\'' +
+                ", threadDate='" + threadDate + '\'' +
+                ", forumID=" + forumID +
+                ", playerID=" + playerID +
+                ", playerName='" + playerName + '\'' +
+                '}';
     }
 }

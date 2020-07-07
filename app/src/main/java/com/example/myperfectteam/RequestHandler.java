@@ -1,5 +1,7 @@
 package com.example.myperfectteam;
 
+import android.util.Log;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -23,6 +25,7 @@ public class RequestHandler {
     public static final String GET_ALL_THREADS = "http://" + ip + "/MyPerfectTeamServer/public/thread/";
     public static final String GET_ALL_FORUMS = "http://" + ip + "/MyPerfectTeamServer/public/forum/";
     public static final String CHECK_PLAYER = "http://" + ip + "/MyPerfectTeamServer/public/player/check/";
+    public static final String GET_ALL_MESSAGES = "http://" + ip + "/MyPerfectTeamServer/public/message/";
 
     public static String sendPost(String r_url, HashMap<String, String> postDataParams) throws Exception {
         URL url = new URL(r_url);
@@ -78,6 +81,39 @@ public class RequestHandler {
         } else {
             return "";
         }
+    }
+
+    public static String sendGetParams(String url, HashMap<String, String> params) throws IOException {
+        String result = "";
+        try {
+            URL obj = new URL(url);
+            HttpURLConnection httpConn = (HttpURLConnection) obj.openConnection();
+            httpConn.setRequestMethod("GET");
+            String key;
+            String value;
+            for (Map.Entry<String, String> item : params.entrySet()) {
+                key = item.getKey();
+                value = item.getValue();
+                httpConn.setRequestProperty(key, value);
+            }
+            httpConn.connect();
+            int resposta = httpConn.getResponseCode();
+            if (resposta == HttpsURLConnection.HTTP_OK) {
+                String line;
+                BufferedReader br = new BufferedReader(new InputStreamReader(httpConn.getInputStream()));
+                while ((line = br.readLine()) != null) {
+                    result += line;
+                }
+                Log.i("ResConnectUtils", result);
+            } else {
+                result = "";
+            }
+        } catch
+        (Exception ex) {
+            ex.printStackTrace();
+        }
+        return
+            result;
     }
 
     private static String encodeParams(HashMap<String, String> params) throws Exception {

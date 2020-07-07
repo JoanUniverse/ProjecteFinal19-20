@@ -43,7 +43,7 @@ public class LlistaForo extends Fragment {
         showThreads();
     }
     public interface ForoListener {
-        void onFilSeleccionat(String fil);
+        void onFilSeleccionat(ThreadObject threadObject);
     }
     public void setForoListener(ForoListener listener) {
         this.listener=listener;
@@ -113,7 +113,7 @@ public class LlistaForo extends Fragment {
 //                }
                 ThreadObject threadObject = adapter.getItem(pos);
                 String temaFil = threadObject.getThreadTitle();
-                listener.onFilSeleccionat(temaFil);
+                listener.onFilSeleccionat(threadObject);
                 preferences.setLastThreadID(threadObject.getThreadID());
             }
         });
