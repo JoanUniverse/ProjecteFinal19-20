@@ -1,21 +1,18 @@
 package com.example.myperfectteam;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDialogFragment;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
+
+import com.example.myperfectteam.mptutilities.Preferences;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -111,7 +108,14 @@ public class SteamOpenIDSignInActivity extends AppCompatActivity {
                 JSONObject convertedObject = new JSONObject(s);
                 response = convertedObject.getBoolean("correcta");
                 if(response){
-                    Toast.makeText(getApplicationContext(), s, Toast.LENGTH_LONG).show();
+                    JSONObject playerData;
+                    playerData = convertedObject.getJSONObject("dades");
+                    preferences = new Preferences(getApplicationContext());
+                    preferences.setLastPlayerID(playerData.getInt("playerID"));
+                    preferences.setPlayerName(playerData.getString("playerName"));
+                    preferences.setLastPlatfornID(playerData.getString("playerPlatformID"));
+                    //Toast.makeText(getApplicationContext(), s, Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Welcome " + playerData.getString("playerName"), Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(getApplicationContext(), ForumListActivity.class);
                     startActivity(intent);
                     finish();

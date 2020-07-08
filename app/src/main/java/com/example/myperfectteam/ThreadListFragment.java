@@ -11,6 +11,9 @@ import android.widget.ListView;
 
 import androidx.fragment.app.Fragment;
 
+import com.example.myperfectteam.arrayadapters.ArrayThread;
+import com.example.myperfectteam.mptobjects.ThreadObject;
+import com.example.myperfectteam.mptutilities.Preferences;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.gson.Gson;
 
@@ -21,7 +24,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class LlistaForo extends Fragment {
+public class ThreadListFragment extends Fragment {
     Preferences preferences;
     public static ArrayList<ThreadObject> threadObjects = new ArrayList<>();
     private ListView listView;
@@ -32,7 +35,7 @@ public class LlistaForo extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.foro_llista, container, false);
+        return inflater.inflate(R.layout.fragment_thread_list, container, false);
     }
     @Override
     public void onActivityCreated(Bundle state) {
@@ -103,7 +106,7 @@ public class LlistaForo extends Fragment {
 //        fils.add(new Fil(0,"Toni toni", "Es unaaaaa prova"));
 //        fils.add(new Fil(0,"Bernat desclot 23", "Es una provaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa a que si que es una prova ja ho se jo ja"));
 
-        adapter = new ArrayFil(getContext(), R.layout.fil_list_item, threadObjects);
+        adapter = new ArrayThread(getContext(), R.layout.thread_list_item, threadObjects);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

@@ -1,4 +1,4 @@
-package com.example.myperfectteam;
+package com.example.myperfectteam.mptutilities;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -182,6 +182,12 @@ public class Preferences {
         this.threadObject = threadObject;
         SharedPreferences.Editor editor = this.pref.edit();
         editor.putString(THREADOBJECT, threadObject);
+        editor.commit();
+    }
+
+    public void clearPreferences() {
+        SharedPreferences.Editor editor = this.pref.edit();
+        editor.clear();
         editor.commit();
     }
 }

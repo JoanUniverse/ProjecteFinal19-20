@@ -1,14 +1,15 @@
 package com.example.myperfectteam;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -18,6 +19,10 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.myperfectteam.arrayadapters.ArrayMessage;
+import com.example.myperfectteam.mptobjects.Message;
+import com.example.myperfectteam.mptobjects.ThreadObject;
+import com.example.myperfectteam.mptutilities.Preferences;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.gson.Gson;
 
@@ -28,7 +33,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class FilActivity extends AppCompatActivity {
+public class ThreadMessagesActivity extends AppCompatActivity {
     Preferences preferences;
     ThreadObject threadObject;
     public static ArrayList<Message> messages = new ArrayList<>();
@@ -43,15 +48,21 @@ public class FilActivity extends AppCompatActivity {
     Button sendMessageButton;
     EditText messageET;
     String messageText;
+    TextView textViewBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_fil);
+        setContentView(R.layout.activity_thread_messages);
         floatingActionButton = findViewById(R.id.fabScroll);
         floatingActionButtonMessage = findViewById(R.id.fabMessage);
         preferences = new Preferences(this);
-        threadObject = MainActivity.threadObjectSelected;
+        threadObject = ThreadListActivity.threadObjectSelected;
+        this.getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setDisplayShowCustomEnabled(true);
+        getSupportActionBar().setCustomView(R.layout.custom_action_bar);
+        textViewBar = findViewById(R.id.name);
+        textViewBar.setText("Thread messages");
 
         messageText = "";
         layoutWeight = true;
@@ -152,7 +163,7 @@ public class FilActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 messageText = messageET.getText().toString().trim();
-                if (messageText.equals("")) {
+                if (messageText.trim().equals("")) {
                     Toast.makeText(getApplicationContext(), "Message can't be empty!", Toast.LENGTH_LONG).show();
                 } else {
                     new RequestAsyncSendMessage().execute();
@@ -163,6 +174,16 @@ public class FilActivity extends AppCompatActivity {
 
         adapter = new ArrayMessage(this, R.layout.message_list_item, messages);
         listView.setAdapter(adapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> list, View view, int pos, long id) {
+                Message message = adapter.getItem(pos);
+                String messagePlayer = message.getPlayerName();
+                Intent intent = new Intent(getApplicationContext(), CsgoPlayerStatsActivity.class);
+                intent.putExtra("playerName", messagePlayer);
+                startActivity(intent);
+            }
+        });
 
     }
 
@@ -198,6 +219,29 @@ public class FilActivity extends AppCompatActivity {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.logout:
+                preferences.clearPreferences();
+                Toast.makeText(getApplicationContext(), "Bye", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(this, LoginActivity.class);
+                startActivity(intent);
+                finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
     }
 }

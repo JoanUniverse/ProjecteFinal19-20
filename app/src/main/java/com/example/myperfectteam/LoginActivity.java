@@ -1,15 +1,18 @@
 package com.example.myperfectteam;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
+import android.widget.TextView;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
-import org.json.JSONArray;
+import com.example.myperfectteam.mptutilities.Preferences;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -21,14 +24,28 @@ public class LoginActivity extends AppCompatActivity {
     private EditText userPasswordET;
     private String userName;
     private String password;
+    TextView textViewBar;
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        this.getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setDisplayShowCustomEnabled(true);
+        getSupportActionBar().setCustomView(R.layout.custom_action_bar);
+        textViewBar = findViewById(R.id.name);
+        textViewBar.setText("Login");
         preferences = new Preferences(this);
         userNameET = findViewById(R.id.userNameEditText);
         userPasswordET = findViewById(R.id.passwordEditText);
+        if(preferences.getUserID() != -1) {
+            Intent intent = new Intent(getApplicationContext(), GameActivity.class);
+            userName = preferences.getUserName();
+            intent.putExtra("UserCode", userName);
+            startActivity(intent);
+            finish();
+        }
     }
 
     public class RequestAsync extends AsyncTask<String,String,String> {
@@ -65,7 +82,7 @@ public class LoginActivity extends AppCompatActivity {
                     intent.putExtra("UserCode", userName);
                     startActivity(intent);
                 }
-                Toast.makeText(getApplicationContext(), s, Toast.LENGTH_LONG).show();
+                //Toast.makeText(getApplicationContext(), s, Toast.LENGTH_LONG).show();
             } catch (JSONException e) {
                 e.printStackTrace();
             }

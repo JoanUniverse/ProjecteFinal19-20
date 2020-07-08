@@ -1,4 +1,4 @@
-package com.example.myperfectteam;
+package com.example.myperfectteam.arrayadapters;
 
 import android.app.Activity;
 import android.content.Context;
@@ -9,6 +9,9 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+
+import com.example.myperfectteam.R;
+import com.example.myperfectteam.mptobjects.Forum;
 
 import java.util.ArrayList;
 

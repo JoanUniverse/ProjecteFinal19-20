@@ -1,4 +1,4 @@
-package com.example.myperfectteam;
+package com.example.myperfectteam.mptobjects;
 
 public class Forum {
     private int forumID;

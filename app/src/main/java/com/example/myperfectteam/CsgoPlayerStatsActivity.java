@@ -9,45 +9,35 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.myperfectteam.mptutilities.Preferences;
 
-public class PlayerNameActivity extends AppCompatActivity {
-
-    EditText playerNameET;
-    String playerName;
-    int gameID;
-    TextView textViewBar;
+public class CsgoPlayerStatsActivity extends AppCompatActivity {
+    String messagePlayerName;
+    TextView playerNameTV;
     Preferences preferences;
+    TextView textViewBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_player_name);
+        setContentView(R.layout.activity_csgo_player_stats);
+        Intent intent = getIntent();
+        messagePlayerName = intent.getStringExtra("playerName");
+        playerNameTV = findViewById(R.id.csgoStatsPlayerName);
+        playerNameTV.setText(messagePlayerName);
         preferences = new Preferences(this);
         this.getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setDisplayShowCustomEnabled(true);
         getSupportActionBar().setCustomView(R.layout.custom_action_bar);
         textViewBar = findViewById(R.id.name);
-        textViewBar.setText("Player name");
-        playerNameET = findViewById(R.id.playerNameET);
-        Intent intent = getIntent();
-        gameID = intent.getIntExtra("gameID", 0);
-        Toast.makeText(this, "ID: " + gameID, Toast.LENGTH_LONG).show();
+        textViewBar.setText("Player stats");
     }
 
-    public void onPlayerNameButtonClick(View v) {
-        playerName = playerNameET.getText().toString();
-        if (playerName.trim().equals("")) {
-            Toast.makeText(this, "This field can't be empty", Toast.LENGTH_LONG).show();
-        } else {
-            Intent intent = new Intent(this, SteamOpenIDSignInActivity.class);
-            intent.putExtra("gameID", gameID);
-            intent.putExtra("playerName", playerName);
-            startActivity(intent);
-        }
+    public void onCsgoCloseButtonClick(View v) {
+        finish();
     }
 
     @Override

@@ -4,50 +4,63 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.myperfectteam.mptobjects.ThreadObject;
 import com.example.myperfectteam.mptutilities.Preferences;
 
-public class PlayerNameActivity extends AppCompatActivity {
+public class ThreadListActivity extends AppCompatActivity implements ThreadListFragment.ForoListener, ThreadListFragment.FabListener{
 
-    EditText playerNameET;
-    String playerName;
-    int gameID;
+    public static ThreadObject threadObjectSelected;
+    ListView listView;
     TextView textViewBar;
     Preferences preferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_player_name);
+        setContentView(R.layout.activity_thread_list);
         preferences = new Preferences(this);
         this.getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setDisplayShowCustomEnabled(true);
         getSupportActionBar().setCustomView(R.layout.custom_action_bar);
         textViewBar = findViewById(R.id.name);
-        textViewBar.setText("Player name");
-        playerNameET = findViewById(R.id.playerNameET);
+        textViewBar.setText("Threads");
         Intent intent = getIntent();
-        gameID = intent.getIntExtra("gameID", 0);
-        Toast.makeText(this, "ID: " + gameID, Toast.LENGTH_LONG).show();
+        int forumID = intent.getIntExtra("forumID", 0);
+        Toast.makeText(this, "FORUM ID: " + forumID, Toast.LENGTH_LONG).show();
+        ThreadListFragment threadListFragment = (ThreadListFragment)
+                getSupportFragmentManager().findFragmentById(R.id.FrgLlista);
+        threadListFragment.setForoListener(this);
+        threadListFragment.setFabListener(this);
     }
 
-    public void onPlayerNameButtonClick(View v) {
-        playerName = playerNameET.getText().toString();
-        if (playerName.trim().equals("")) {
-            Toast.makeText(this, "This field can't be empty", Toast.LENGTH_LONG).show();
+    @Override
+    public void onFilSeleccionat(ThreadObject threadObject) {
+        // Mirar l'orientació
+        threadObjectSelected = threadObject;
+        int orientation = this.getResources().getConfiguration().orientation;
+        if (orientation == Configuration.ORIENTATION_PORTRAIT) {
+            // estam en vertical
+            Intent i = new Intent(this, ThreadMessagesActivity.class);
+            startActivity(i);
         } else {
-            Intent intent = new Intent(this, SteamOpenIDSignInActivity.class);
-            intent.putExtra("gameID", gameID);
-            intent.putExtra("playerName", playerName);
-            startActivity(intent);
+            // estam en horitzontal
+            ((ThreadMessagesFragment) getSupportFragmentManager()
+                    .findFragmentById(R.id.FrgFil)).mostraFil(threadObject);
         }
+    }
+
+    public void onFabSelected() {
+        Intent i = new Intent(this, AddThreadActivity.class);
+        startActivity(i);
+        finish();
     }
 
     @Override

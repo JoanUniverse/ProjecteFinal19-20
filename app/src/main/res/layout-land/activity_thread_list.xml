@@ -6,17 +6,17 @@
     android:layout_height="match_parent"
     android:baselineAligned="false">
 
-    <fragment class="com.example.myperfectteam.LlistaForo"
+    <fragment class="com.example.myperfectteam.ThreadListFragment"
         android:id="@+id/FrgLlista"
-        android:layout_weight="30"
+        android:layout_weight="45"
         android:layout_width="0px"
         android:layout_height="match_parent"
-        tools:layout="@layout/foro_llista" />
+        tools:layout="@layout/fragment_thread_list" />
 
-    <fragment class="com.example.myperfectteam.FilForo"
+    <fragment class="com.example.myperfectteam.ThreadMessagesFragment"
         android:id="@+id/FrgFil"
-        android:layout_weight="70"
+        android:layout_weight="55"
         android:layout_width="0px"
         android:layout_height="match_parent"
-        tools:layout="@layout/foro_llista" />
+        tools:layout="@layout/fragment_thread_list" />
 </LinearLayout>

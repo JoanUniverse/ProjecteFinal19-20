@@ -1,4 +1,4 @@
-package com.example.myperfectteam;
+package com.example.myperfectteam.arrayadapters;
 
 import android.app.Activity;
 import android.content.Context;
@@ -10,16 +10,18 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
-import org.w3c.dom.Text;
+import com.example.myperfectteam.mptutilities.Preferences;
+import com.example.myperfectteam.R;
+import com.example.myperfectteam.mptobjects.ThreadObject;
 
 import java.util.ArrayList;
 
-public class ArrayFil extends ArrayAdapter<ThreadObject> {
+public class ArrayThread extends ArrayAdapter<ThreadObject> {
     Preferences preferences;
     private Context context;
     private ArrayList<ThreadObject> threadObjects;
 
-    public ArrayFil(@NonNull Context context, int resource, ArrayList<ThreadObject> threadObjects) {
+    public ArrayThread(@NonNull Context context, int resource, ArrayList<ThreadObject> threadObjects) {
         super(context, resource, threadObjects);
         this.context = context;
         this.threadObjects = threadObjects;
@@ -29,7 +31,7 @@ public class ArrayFil extends ArrayAdapter<ThreadObject> {
         preferences = new Preferences(getContext());
         final ThreadObject threadObject = threadObjects.get(position);
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
-        View view = inflater.inflate(R.layout.fil_list_item, null);
+        View view = inflater.inflate(R.layout.thread_list_item, null);
 
         TextView playerTV = view.findViewById(R.id.threadPlayerName);
         TextView threadTitleTV = view.findViewById(R.id.threadTitle);
