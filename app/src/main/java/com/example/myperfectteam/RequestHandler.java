@@ -26,6 +26,7 @@ public class RequestHandler {
     public static final String GET_ALL_FORUMS = "http://" + ip + "/MyPerfectTeamServer/public/forum/";
     public static final String CHECK_PLAYER = "http://" + ip + "/MyPerfectTeamServer/public/player/check/";
     public static final String GET_ALL_MESSAGES = "http://" + ip + "/MyPerfectTeamServer/public/message/";
+    public static final String SEND_MESSAGE = "http://" + ip + "/MyPerfectTeamServer/public/message/insert/";
 
     public static String sendPost(String r_url, HashMap<String, String> postDataParams) throws Exception {
         URL url = new URL(r_url);
