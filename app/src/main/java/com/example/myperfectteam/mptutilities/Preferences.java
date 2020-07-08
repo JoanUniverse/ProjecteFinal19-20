@@ -21,6 +21,7 @@ public class Preferences {
     private static final String LASTPLAYERID = "lastPlayerID";
     private static final String CSGOPLAYERID = "csgoPlayerID";
     private static final String OWPLAYERID = "owPlayerID";
+    private static final String LASTGAMEID = "lastGameID";
 
     private int userID;
     private String userName;
@@ -30,6 +31,7 @@ public class Preferences {
     private String playerName;
     private String threadObject;
 
+    private int lastGameID;
     private int lastPlayerID;
     private int csgoPlayerID;
     private int owPlayerID;
@@ -51,6 +53,7 @@ public class Preferences {
         this.lastPlayerID = this.pref.getInt(LASTPLAYERID, -1);
         this.playerName = this.pref.getString(PLAYERNAME, "");
         this.threadObject = this.pref.getString(THREADOBJECT, "");
+        this.lastGameID = this.pref.getInt(LASTGAMEID, -1);
     }
 
     public int getUserID() {
@@ -182,6 +185,17 @@ public class Preferences {
         this.threadObject = threadObject;
         SharedPreferences.Editor editor = this.pref.edit();
         editor.putString(THREADOBJECT, threadObject);
+        editor.commit();
+    }
+
+    public int getLastGameID() {
+        return lastGameID;
+    }
+
+    public void setLastGameID(int lastGameID) {
+        this.lastGameID = lastGameID;
+        SharedPreferences.Editor editor = this.pref.edit();
+        editor.putInt(LASTGAMEID, lastGameID);
         editor.commit();
     }
 
