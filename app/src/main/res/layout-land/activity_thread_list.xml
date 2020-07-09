@@ -6,14 +6,14 @@
     android:layout_height="match_parent"
     android:baselineAligned="false">
 
-    <fragment class="com.example.myperfectteam.ThreadListFragment"
+    <fragment class="com.example.myperfectteam.mptfragments.ThreadListFragment"
         android:id="@+id/FrgLlista"
         android:layout_weight="45"
         android:layout_width="0px"
         android:layout_height="match_parent"
         tools:layout="@layout/fragment_thread_list" />
 
-    <fragment class="com.example.myperfectteam.ThreadMessagesFragment"
+    <fragment class="com.example.myperfectteam.mptfragments.ThreadMessagesFragment"
         android:id="@+id/FrgFil"
         android:layout_weight="55"
         android:layout_width="0px"

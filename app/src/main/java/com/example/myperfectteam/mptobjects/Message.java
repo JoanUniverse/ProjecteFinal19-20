@@ -1,6 +1,7 @@
 package com.example.myperfectteam.mptobjects;
 
 public class Message {
+    private int messageID;
     private int messageToID;
     private String messageToName;
     private String messageDate;
@@ -11,7 +12,8 @@ public class Message {
     private int teamID;
     private String teamName;
 
-    public Message(int messageToID, String messageToName, String messageDate, String messageText, int playerID, String playerName, int threadID, int teamID, String teamName) {
+    public Message(int messageID, int messageToID, String messageToName, String messageDate, String messageText, int playerID, String playerName, int threadID, int teamID, String teamName) {
+        this.messageID = messageID;
         this.messageToID = messageToID;
         this.messageToName = messageToName;
         this.messageDate = messageDate;
@@ -21,6 +23,14 @@ public class Message {
         this.threadID = threadID;
         this.teamID = teamID;
         this.teamName = teamName;
+    }
+
+    public int getMessageID() {
+        return messageID;
+    }
+
+    public void setMessageID(int messageID) {
+        this.messageID = messageID;
     }
 
     public int getMessageToID() {
@@ -98,7 +108,8 @@ public class Message {
     @Override
     public String toString() {
         return "Message{" +
-                "messageToID=" + messageToID +
+                "messageID=" + messageID +
+                ", messageToID=" + messageToID +
                 ", messageToName='" + messageToName + '\'' +
                 ", messageDate='" + messageDate + '\'' +
                 ", messageText='" + messageText + '\'' +

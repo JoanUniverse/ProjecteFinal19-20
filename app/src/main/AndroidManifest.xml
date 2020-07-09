@@ -12,28 +12,29 @@
     <application
         android:allowBackup="true"
         android:hardwareAccelerated="false"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/logo_icon"
         android:label="@string/app_name"
         android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/CustomTheme">
-        <activity android:name=".CsgoPlayerStatsActivity"></activity>
-        <activity android:name=".AddThreadActivity" />
-        <activity android:name=".ForumListActivity"></activity>
-        <activity android:name=".PlayerNameActivity" />
-        <activity android:name=".SteamOpenIDSignInActivity" />
-        <activity android:name=".GameActivity" />
-        <activity android:name=".RegisterActivity" />
-        <activity android:name=".LoginActivity">
+        <activity android:name=".mptactivities.DeleteMessageActivity"></activity>
+        <activity android:name=".mptactivities.CsgoPlayerStatsActivity" />
+        <activity android:name=".mptactivities.AddThreadActivity" />
+        <activity android:name=".mptactivities.ForumListActivity" />
+        <activity android:name=".mptactivities.PlayerNameActivity" />
+        <activity android:name=".mptactivities.SteamOpenIDSignInActivity" />
+        <activity android:name=".mptactivities.GameActivity" />
+        <activity android:name=".mptactivities.RegisterActivity" />
+        <activity android:name=".mptactivities.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ThreadMessagesActivity" />
-        <activity android:name=".ThreadListActivity" />
+        <activity android:name=".mptactivities.ThreadMessagesActivity" />
+        <activity android:name=".mptactivities.ThreadListActivity" />
     </application>
 
 </manifest>

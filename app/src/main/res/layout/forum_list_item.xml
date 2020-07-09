@@ -1,20 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="140dp"
     android:background="@android:color/white"
-    android:padding="10dp"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="10dp">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/forumNameTV"></TextView>
+        android:layout_height="60dp"
+        android:background="@drawable/estandarte_orange"
+        android:paddingLeft="40dp"
+        android:paddingRight="40dp">
 
-    <TextView
+        <TextView
+            android:id="@+id/forumNameTV"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="player"
+            android:gravity="center|left"
+            android:textSize="16dp"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"></TextView>
+
+
+    </LinearLayout>
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/forumDescriptionTV"></TextView>
-
-
+        android:layout_height="80dp"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp">
+        <TextView
+            android:id="@+id/forumDescriptionTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="date"
+            android:textColor="#266597"></TextView>
+    </LinearLayout>
 </LinearLayout>

@@ -17,6 +17,9 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        android:background="#266597"
+        android:textSize="30dp"
         android:layout_marginTop="20dp"
         android:text="K/D ratio"
         android:layout_gravity="center"/>
@@ -27,9 +30,9 @@
         android:textSize="100dp"
         android:layout_gravity="center"
         android:textAlignment="center"
-        android:textColor="@android:color/holo_green_light"
+        android:textColor="@android:color/darker_gray"
         android:id="@+id/kdRatioTV"
-        android:text="0.22"/>
+        android:text="0"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -45,16 +48,42 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@android:color/white"
+                android:background="#266597"
+                android:layout_marginTop="40dp"
+                android:textSize="25dp"
                 android:text="Total wins"
                 android:textAlignment="center"
                 android:gravity="center_horizontal" />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="#266597"
+                android:textSize="30dp"
                 android:textAlignment="center"
                 android:gravity="center_horizontal"
-                android:text="2344"
+                android:text="0"
                 android:id="@+id/totalWinsTV"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/white"
+                android:background="#266597"
+                android:layout_marginTop="40dp"
+                android:textSize="25dp"
+                android:text="Headshot ratio"
+                android:textAlignment="center"
+                android:gravity="center_horizontal" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#266597"
+                android:textSize="30dp"
+                android:textAlignment="center"
+                android:gravity="center_horizontal"
+                android:text="0"
+                android:id="@+id/headshotRatioTV"/>
 
         </LinearLayout>
         <LinearLayout
@@ -66,25 +95,52 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@android:color/white"
+                android:background="#266597"
+                android:layout_marginTop="40dp"
+                android:textSize="25dp"
                 android:textAlignment="center"
                 android:gravity="center_horizontal"
                 android:text="MVPs"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="#266597"
+                android:textSize="30dp"
                 android:textAlignment="center"
                 android:gravity="center_horizontal"
-                android:text="9721"/>
+                android:id="@+id/mvpTV"
+                android:text="0"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/white"
+                android:background="#266597"
+                android:layout_marginTop="40dp"
+                android:textSize="25dp"
+                android:text="Hours played"
+                android:textAlignment="center"
+                android:gravity="center_horizontal" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#266597"
+                android:textSize="30dp"
+                android:textAlignment="center"
+                android:gravity="center_horizontal"
+                android:text="0"
+                android:id="@+id/timePlayedTV"/>
 
         </LinearLayout>
 
     </LinearLayout>
-
     <!--Total wins, kda, headshotratio, mvp, timePlayed, rank-->
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginTop="40dp"
         android:textColor="@android:color/white"
         android:background="#266597"
         android:onClick="onCsgoCloseButtonClick"

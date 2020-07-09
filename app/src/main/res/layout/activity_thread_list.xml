@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <fragment
-        class="com.example.myperfectteam.ThreadListFragment"
+        class="com.example.myperfectteam.mptfragments.ThreadListFragment"
         android:id="@+id/FrgLlista"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
